@@ -11,37 +11,37 @@
     --h1-font-size: 1.5rem;
     --normal-font-size: .938rem;
     --small-font-size: .813rem;
-}
 
-@media screen and (min-width: 768px) {
-    :root {
-        --normal-font-size: 1rem;
-        --small-font-size: .875rem;
+    @media screen and (min-width: 768px) {
+        :root {
+            --normal-font-size: 1rem;
+            --small-font-size: .875rem;
+        }
     }
-}
-
-*, ::before, ::after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--body-font);
-    font-size: var(--normal-font-size);
-    color: var(--first-color-dark);
-}
-
-h1 {
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    
+    *, ::before, ::after {
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--body-font);
+        font-size: var(--normal-font-size);
+        color: var(--first-color-dark);
+    }
+    
+    h1 {
+        margin: 0;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
 }
