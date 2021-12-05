@@ -4,22 +4,38 @@
             <img src="../../../assets/images/undraw_horror_movie_3988.svg" alt="">
         </div>
         <div class="login-form">
-            <!-- Login -->
-            <form action="" class="login-register" id="login-in">
-                <h1 class="login-title">Sign In</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-register">
+                <h1 class="login-title">Watch Movies!</h1>
                 <div class="login-box">
                     <i class="bx bx-user login-icon"></i>
-                    <input type="text" placeholder="Email" class="login-input">
+                    <input type="text" placeholder="Email" class="login-input" formControlName="email">
+                </div>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                    <div *ngIf="email?.errors?.['required']">
+                        Email required
+                    </div>
+                    <div *ngIf="email?.errors?.['email']">
+                        Invalid email format
+                    </div>
                 </div>
                 <div class="login-box">
                     <i class="bx bx-lock login-icon"></i>
-                    <input type="password" placeholder="Password" class="login-input">
+                    <input type="password" placeholder="Password" class="login-input" formControlName="password"
+                        #passwordInput>
+                    <i *ngIf="!showPassword" class="bx bx-show-alt show-password" (click)="onTogglePassword()"></i>
+                    <i *ngIf="showPassword" class="bx bx-hide hide-password" (click)="onTogglePassword()"></i>
                 </div>
-                <a href="#" class="login-forgot">Forgot Password?</a>
-                <a href="#" class="login-button">Sign In</a>
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+                    <div *ngIf="password?.errors?.['required']">
+                        Password missing
+                    </div>
+                </div>
+                <a class="login-forgot">Forgot Password?</a>
+                <input [ngClass]="{'disabled-button': !loginForm.valid}" type="submit" value="Sign In"
+                    class="signin-button" [disabled]="!loginForm.valid">
                 <div>
                     <span class="login-account">Don't have an Account?</span>
-                    <span class="login-signin" id="sign-up" (click)="onToggleRegisterSection()">Sign Up</span>
+                    <span class="login-signin" id="sign-up" (click)="goToRegister()">Sign Up</span>
                 </div>
             </form>
         </div>
