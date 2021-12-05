@@ -1,33 +1,57 @@
-<div class="login">
-    <div class="login-content">
-        <div class="login-img">
+<div class="register">
+    <div class="register-content">
+        <div class="register-img">
             <img src="../../../assets/images/undraw_horror_movie_3988.svg" alt="">
         </div>
-        <div class="login-form">
-            <!-- Register -->
-            <form action="" class="login-create" id="login-up">
-                <h1 class="login-title">Create Account?</h1>
-                <div class="login-box">
-                    <i class="bx bx-user login-icon"></i>
-                    <input type="text" placeholder="Name" class="login-input">
+        <div class="register-form">
+            <form [formGroup]="registerForm" class="register-create" (ngSubmit)="onSubmit()">
+                <h1 class="register-title">Create Account?</h1>
+                <div class="register-box">
+                    <i class="bx bx-user register-icon"></i>
+                    <input type="text" placeholder="Name" class="register-input" formControlName="name">
                 </div>
-                <div class="login-box">
-                    <i class="bx bx-at login-icon"></i>
-                    <input type="text" placeholder="Email" class="login-input">
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+                    <div *ngIf="name?.errors?.['required']">
+                        Name required
+                    </div>
                 </div>
-                <div class="login-box">
-                    <i class="bx bx-lock login-icon"></i>
-                    <input type="password" placeholder="Password" class="login-input">
+                <div class="register-box">
+                    <i class="bx bx-at register-icon"></i>
+                    <input type="text" placeholder="Email" class="register-input" formControlName="email">
                 </div>
-                <a href="#" class="login-button">Sign Up</a>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                    <div *ngIf="email?.errors?.['required']">
+                        Email required
+                    </div>
+                    <div *ngIf="email?.errors?.['email']">
+                        Invalid email format
+                    </div>
+                </div>
+                <div class="register-box">
+                    <i class="bx bx-lock register-icon"></i>
+                    <input type="password" placeholder="Password" class="register-input" formControlName="password"
+                        #passwordInput>
+                    <i *ngIf="!showPassword" class="bx bx-show-alt show-password" (click)="onTogglePassword()"></i>
+                    <i *ngIf="showPassword" class="bx bx-hide hide-password" (click)="onTogglePassword()"></i>
+                </div>
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+                    <div *ngIf="password?.errors?.['required']">
+                        Password required
+                    </div>
+                    <div *ngIf="password?.errors?.['minlength']">
+                        Password must be at least 8 characters long.
+                    </div>
+                </div>
+                <input [ngClass]="{'disabled-button': !registerForm.valid}" type="submit" class="signup-button"
+                    value="Sign Up" [disabled]="!registerForm.valid">
                 <div>
-                    <span class="login-account">Already have an Account?</span>
-                    <span class="login-signup" id="sign-in" (click)="onToggleRegisterSection()">Sign In</span>
+                    <span class="register-account">Already have an Account?</span>
+                    <span class="register-signup" id="sign-in" (click)="goToLogin()">Sign In</span>
                 </div>
-                <div class="login-social">
-                    <a href="#" class="login-social-icon"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" class="login-social-icon"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="login-social-icon"><i class="bx bxl-google"></i></a>
+                <div class="register-social">
+                    <a class="register-social-icon"><i class="bx bxl-facebook"></i></a>
+                    <a class="register-social-icon"><i class="bx bxl-twitter"></i></a>
+                    <a class="register-social-icon"><i class="bx bxl-google"></i></a>
                 </div>
             </form>
         </div>

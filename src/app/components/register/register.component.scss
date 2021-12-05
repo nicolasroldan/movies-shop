@@ -1,4 +1,4 @@
-.login {
+.register {
     display: grid;
     grid-template-columns: 100%;
     height: 100vh;
@@ -6,25 +6,25 @@
     margin-right: 1.5rem;
 }
 
-.login-content {
+.register-content {
     display: grid;
 }
 
-.login-img {
+.register-img {
     justify-self: center;
 }
 
-.login-img img {
+.register-img img {
     width: 310px;
     margin-top: 1.5rem;
 }
 
-.login-form {
+.register-form {
     position: relative;
     height: 368px;
 }
 
-.login-register, .login-create {
+.register-create {
     position: absolute;
     bottom: 1rem;
     width: 100%;
@@ -34,10 +34,10 @@
     text-align: center;
     box-shadow: 0 8px 20px rgba(35, 0, 77, .2);
     animation-duration: .4s;
-    animation-name: animate-login;
+    animation-name: animate-register;
 }
 
-@keyframes animate-login{
+@keyframes animate-register{
     0%{
       transform: scale(1,1);
     }
@@ -49,14 +49,14 @@
     }
   }
 
-.login-title {
+.register-title {
     font-size: var(--h1-font-size);
     margin-bottom: 2rem;
 }
 
-.login-box {
+.register-box {
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: max-content 1fr max-content;
     column-gap: .5rem;
     padding: 1.125rem 1rem;
     background-color: #FFF;
@@ -64,12 +64,18 @@
     border-radius: .5rem;
 }
 
-.login-icon {
+.show-password, .hide-password {
+    font-size: 1.5rem;
+    color: var(--first-color-light);
+    cursor: pointer;
+}
+
+.register-icon {
     font-size: 1.5rem;
     color: var(--first-color);
 }
 
-.login-input {
+.register-input {
     border: none;
     outline: none;
     font-size: var(--normal-font-size);
@@ -77,84 +83,86 @@
     color: var(--first-color-dark);
 }
 
-.login-input::placeholder {
+.register-input::placeholder {
     font-size: var(--normal-font-size);
     font-family: var(--body-font);
     color: var(--first-color-light);
 }
 
-.login-forgot {
-    display: block;
-    width: max-content;
-    margin-left: auto;
-    margin-top: .5rem;
-    font-size: var(--small-font-size);
-    font-weight: 600;
-    color: var(--first-color-light);
+.alert-danger {
+    margin-top: 0.5rem;
+    padding: 0.1rem 0.5rem;
 }
 
-.login-button {
+.signup-button {
     display: block;
-    padding: 1rem;
+    padding: 0.8rem 0;
     margin: 2rem 0;
     background-color: var(--first-color);
     color: #FFF;
     font-weight: 600;
     text-align: center;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     transition: 1s;
+    border: none;
+    width: 100%;
 }
 
-.login-button:hover {
+.signup-button:hover {
     background-color: var(--first-color-dark);
 }
 
-.login-account, .login-signin, .login-signup {
+.disabled-button {
+    opacity: 0.5;
+    cursor: none;
+}
+
+.register-account, .register-signup {
     font-weight: 600;
     margin: 0 .3rem;
     font-size: var(--small-font-size);
 }
 
-.login-account {
+.register-account {
     color: var(--first-color-dark);
 }
   
-.login-signin, .login-signup {
+.register-signup {
     color: var(--first-color);
     cursor: pointer;
 }
 
-.login-social {
+.register-social {
     margin-top: 2rem;
 }
   
-.login-social-icon {
+.register-social-icon {
     font-size: 1.5rem;
     color: var(--first-color-dark);
     margin: 0 1.5rem;
 }
 
 @media screen and (min-width: 576px) {
-    .login-form {
+    .register-form {
         width: 348px;
         justify-self: center;
     }
 }
   
 @media screen and (min-width: 1024px) {
-    .login {
+    .register {
         height: 100vh;
         overflow: hidden;
     }
     
-    .login-content {
+    .register-content {
         grid-template-columns: repeat(2, max-content);
         justify-content: center;
         align-items: center;
         margin-left: 10rem;
     }
     
-    .login-img {
+    .register-img {
         display: flex;
         width: 600px;
         height: 588px;
@@ -163,20 +171,13 @@
         padding-left: 1rem;
     }
     
-    .login-img img {
+    .register-img img {
         width: 390px;
         margin-top: 0;
     }
     
-    .login-register, .login-create {
+    .register-create {
         left: -11rem;
-    }
-  
-    .login-register {
-        bottom: -2rem;
-    }
-    
-    .login-create {
         bottom: -5.5rem;
     }
 }
