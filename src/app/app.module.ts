@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MoviesGridComponent } from './components/movies-grid/movies-grid.component';
 import { MovieDetailsComponent } from './components/movies-grid/movie-details/movie-details.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
     DashboardComponent,
     MoviesGridComponent,
     MovieDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
