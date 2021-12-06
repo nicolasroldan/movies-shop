@@ -1,1 +1,3 @@
+<app-header *ngIf="!hasRoute(['/login', '/register'])"></app-header>
 <router-outlet></router-outlet>
+<app-footer *ngIf="!hasRoute(['/login', '/register'])"></app-footer>
