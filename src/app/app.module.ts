@@ -8,6 +8,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MoviesGridComponent } from './components/movies-grid/movies-grid.component';
+import { MovieDetailsComponent } from './components/movies-grid/movie-details/movie-details.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    MoviesGridComponent,
+    MovieDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
