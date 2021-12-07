@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private moviesService: MoviesService,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
