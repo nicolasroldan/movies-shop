@@ -2,6 +2,23 @@
     background-color: #544dbb;
 }
 
+.movie-card {
+    transition: all .3s ease-in-out;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    cursor: pointer;
+}
+
+.btn-see-movies {
+    background-color: #544dbb;
+    border-color: #544dbb;
+}
+
 @media(min-width: 768px) {
     .news-input {
         width: 50%;
