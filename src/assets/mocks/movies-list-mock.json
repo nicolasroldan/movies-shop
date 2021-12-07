@@ -1,0 +1,98 @@
+[
+  {
+    "country": "United States",
+    "director": "Reinaldo Marcus Green",
+    "duration": "138 min",
+    "genre": ["Drama", "Biographical"],
+    "id": 1,
+    "image": "assets/images/king-richard.jpg",
+    "price": 51,
+    "synopsis": "Based on the true story, “King Richard follows the journey of Richard Williams, an undeterred father instrumental in raising two of the most extraordinarily gifted athletes of all time, who will end up changing the sport of tennis forever. Driven by a clear vision of their future and using unconventional methods, Richard has a plan that will take Venus and Serena Williams from the streets of Compton, California to the global stage as legendary icons.",
+    "title": "King Richard",
+    "year": 2021
+  },
+  {
+    "country": "United States",
+    "director": "Chloé Zhao",
+    "duration": "156 min",
+    "genre": ["Action", "Science fiction", "Super Heroes"],
+    "id": 2,
+    "image": "assets/images/eternals.jpg",
+    "price": 51,
+    "synopsis": "The saga of the Eternals, a race of immortal beings who lived on Earth and shaped its history and civilizations.",
+    "title": "Eternals",
+    "year": 2021
+  },
+  {
+    "country": "United States",
+    "director": "Rawson Marshall Thurber",
+    "duration": "115 min",
+    "genre": ["Thriller", "Action", "Adventure"],
+    "id": 3,
+    "image": "assets/images/red-notice.jpg",
+    "price": 51,
+    "synopsis": "In the world of international crime, worldwide police Interpol issues a Red Notice, a global alert to hunt down and capture the world’s most wanted art thief.",
+    "title": "Red Notice",
+    "year": 2021
+  },
+  {
+    "country": "United States",
+    "director": "Lin-Manuel Miranda",
+    "duration": "115 min",
+    "genre": ["Musical", "Drama"],
+    "id": 4,
+    "image": "assets/images/tick-tick-boom.jpg",
+    "price": 51,
+    "synopsis": "Based on the autobiographical musical by playwright Jonathan Larson. It is the story of an aspiring composer in New York City who is worried he made the wrong career choice.",
+    "title": "tick, tick... Boom!",
+    "year": 2021
+  },
+  {
+    "country": "Denmark",
+    "director": "Jonas Poher Rasmussen",
+    "duration": "90 min",
+    "genre": ["Documentary", "Animation"],
+    "id": 5,
+    "image": "assets/images/flee.jpg",
+    "price": 51,
+    "synopsis": "An Afghan refugee agrees to tell a remarkable personal narrative of persecution and escape on the condition that his identity not be revealed. As a means of fulfilling that wish, his filmmaker friend uses striking animation to not only protect this young man but also enhance his tale, bending time and memory to recount a visceral, poetic, and death-defying journey dictated by deception, loneliness, and a relentless will to survive.",
+    "title": "Flee",
+    "year": 2021
+  },
+  {
+    "country": "United States",
+    "director": "Michael Curtiz",
+    "duration": "102 min",
+    "genre": ["Drama", "Romance"],
+    "id": 6,
+    "image": "assets/images/casablanca.jpg",
+    "price": 51,
+    "synopsis": "Humphrey Bogart plays Richard 'Rick' Blaine, a cynical but good-hearted American whose café is the gathering place for everyone from the French Police to the black market to the Nazis. When his long-lost love, Ilsa (Ingrid Bergman), surfaces in Casablanca with her Resistance leader husband, Victor Laszlo (Paul Henreid), Rick is pulled into both a love triangle and a web of political intrigue. Ilsa and Victor need to escape from Casablanca, and Rick may be the only one who can help them. The question is, will he?",
+    "title": "Casablanca",
+    "year": 1942
+  },
+  {
+    "country": "Ireland",
+    "director": "Nathalie Biancheri",
+    "duration": "98 min",
+    "genre": ["Thriller", "Drama", "Romance"],
+    "id": 7,
+    "image": "assets/images/wolf.jpg",
+    "price": 51,
+    "synopsis": "Jacob, a man who believes he is a wolf trapped in a human body, is sent to a clinic by his family where he is forced to undergo increasingly extreme forms of 'curative' therapies at the hands of The Zookeeper. Jacob's only solace is the enigmatic wildcat with whom he roams the hospital in the dead of night. The two form an improbable friendship that develops into infatuation.",
+    "title": "Wolf",
+    "year": 2021
+  },
+  {
+    "country": "United States",
+    "director": "Orson Welles",
+    "duration": "119 min",
+    "genre": ["Journalism", "Drama"],
+    "id": 8,
+    "image": "assets/images/citizen-kane.jpg",
+    "price": 51,
+    "synopsis": "The story charts the rise and fall of a newpaper publisher whose wealth and power ultimately isolate him in his castle-like refuge. The last word he utters before his death is 'Rosebud', which triggers a mystery. A group of journalists start investigating in order to solve it.",
+    "title": "Citizen Kane",
+    "year": 1941
+  }
+]
