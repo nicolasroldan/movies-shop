@@ -1,0 +1,10 @@
+// Extra space for header
+.app-container::before {
+    display: block;
+    content: '';
+    height: 50px;    
+}
+// Extra space for footer
+.app-container {
+    padding-bottom: 140px;
+}
