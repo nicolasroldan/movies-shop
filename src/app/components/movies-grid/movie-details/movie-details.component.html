@@ -1,12 +1,12 @@
-<section class="p-5 bg-dark text-light">
+<section *ngIf="movie" class="p-5 bg-dark text-light">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-4">
-                <img [src]="movie?.image" class="img-fluid" alt="">
+                <img [src]="movie.image" class="img-fluid" alt="">
             </div>
             <div class="col-md-8 p-5">
-                <h2>{{movie?.title}}</h2>
-                <p>{{movie?.synopsis}}</p>
+                <h2>{{movie.title}}</h2>
+                <p>{{movie.synopsis}}</p>
                 <button [disabled]="isMovieInCart" class="btn btn-light" (click)="rentMovie(movie)">Rent Movie</button>
                 <div *ngIf="isMovieInCart" class="col-md-3 p-2 my-3 alert alert-warning" role="alert">
                     <p class="m-0">Movie already in Cart</p>
@@ -16,26 +16,26 @@
     </div>
 </section>
 
-<section class="p-5 bg-dark text-light">
+<section *ngIf="movie" class="p-5 bg-dark text-light">
     <div class="container">
         <div class="row g-4">
             <div class="col-md">
                 <h2 class="text-center mb-4">Movie Info</h2>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-light">
-                        <span class="fw-bold">Title:</span><p>{{movie?.title}}</p>
+                        <span class="fw-bold">Title:</span><p>{{movie.title}}</p>
                     </li>
                     <li class="list-group-item text-light">
-                        <span class="fw-bold">Genre:</span><p *ngFor="let genre of movie?.genre">{{genre}}</p>
+                        <span class="fw-bold">Genre:</span><p *ngFor="let genre of movie.genre">{{genre}}</p>
                     </li>
                     <li class="list-group-item text-light">
-                        <span class="fw-bold">Director:</span><p>{{movie?.director}}</p>
+                        <span class="fw-bold">Director:</span><p>{{movie.director}}</p>
                     </li>
                     <li class="list-group-item text-light">
-                        <span class="fw-bold">Origin:</span><p>{{movie?.country}}</p>
+                        <span class="fw-bold">Origin:</span><p>{{movie.country}}</p>
                     </li>
                     <li class="list-group-item text-light">
-                        <span class="fw-bold">Duration:</span><p>{{movie?.duration}}</p>
+                        <span class="fw-bold">Duration:</span><p>{{movie.duration}}</p>
                     </li>
                 </ul>
             </div>
