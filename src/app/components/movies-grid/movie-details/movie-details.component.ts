@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { Movie } from 'src/app/models/Movie';
 import { User } from 'src/app/models/User';
@@ -12,10 +12,11 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit, OnDestroy {
   public movie: Movie;
   private user: User;
   public isMovieInCart: boolean = false;
+  private subscriptions: Subscription = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +27,13 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     const id = this.route.snapshot.paramMap.get('id') ?? '';
-    this.moviesService.getMovie(id).subscribe(movies => {
-      this.movie = movies[0];
-      this.isMovieInCart = this.user.moviesInCart.find(movie => movie.id === this.movie.id) ? true : false;
-    });
+    
+    this.subscriptions.add(
+      this.moviesService.getMovie(id).subscribe(movies => {
+        this.movie = movies[0];
+        this.isMovieInCart = this.user.moviesInCart.find(movie => movie.id === this.movie.id) ? true : false;
+      })
+    );
   }
 
   rentMovie(movie: Movie): void {
@@ -39,5 +43,9 @@ export class MovieDetailsComponent implements OnInit {
 
   getUser(): void {
     this.user = this.userService.getUser();
+  }
+
+  ngOnDestroy(): void {
+      this.subscriptions.unsubscribe();
   }
 }
