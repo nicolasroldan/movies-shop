@@ -1,13 +1,15 @@
-<section class="p-5 bg-light">
+<app-spinner *ngIf="loading"></app-spinner>
+<section *ngIf="user && !loading" class="p-5 bg-light">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md p-5 card">
                 <h3 class="mb-4 ">Shopping Cart</h3>
                 <ul class="list-group list-group-flush">
                     <li *ngFor="let movie of user.moviesInCart"
-                        class="list-group-item d-flex justify-content-between align-items-center">
-                        <p>{{movie.title}}</p>
-                        <p>Price ${{movie.price}}</p>
+                        class="list-group-item justify-content-between d-flex ">
+                        <p class="col">{{movie.title}}</p>
+                        <p class="col-md-auto">Price ${{movie.price}}</p>
+                        <button (click)="deleteMovieFromCart(movie)" type="button" class="btn-close col col-lg-2 " aria-label="Close"></button>
                     </li>
                 </ul>
             </div>
@@ -17,14 +19,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Subtotal ({{user.moviesInCart.length}} items): ${{calculateTotalPrice()}}
                     </h5>
-                    <a class="btn btn-warning">Proceed to checkout</a>
+                    <button [disabled]="user.moviesInCart.length === 0" class="btn btn-warning" (click)="confirmBuyMovies()">Buy Movies</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="p-5 bg-dark my-movies">
+<section *ngIf="user && !loading" class="p-5 bg-dark my-movies">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md p-5 card">
