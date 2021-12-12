@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import { Movie } from 'src/app/models/Movie';
 import { User } from 'src/app/models/User';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -13,10 +12,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
+  public loading: boolean;
   public movie: Movie;
   private user: User;
   public isMovieInCart: boolean = false;
+  public isMovieRented: boolean = false;
   private subscriptions: Subscription = new Subscription();
+  public messageString: string;
+  private userId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,27 +28,40 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.getUser();
+  }
+
+  private getMovie(): void {
     const id = this.route.snapshot.paramMap.get('id') ?? '';
-    
     this.subscriptions.add(
-      this.moviesService.getMovie(id).subscribe(movies => {
-        this.movie = movies[0];
-        this.isMovieInCart = this.user.moviesInCart.find(movie => movie.id === this.movie.id) ? true : false;
+      this.moviesService.getMovie(id).subscribe((movie: Movie) => {
+        this.movie = movie;
+        this.loading = false;
+        this.isMovieInCart = this.user.moviesInCart.find(movie => movie.title === this.movie.title) ? true : false;
+        this.isMovieRented = this.user.rentedMovies.find(movie => movie.title === this.movie.title) ? true : false;
+        this.messageString = this.isMovieInCart ? 'Movie already in Cart' : this.isMovieRented ? 'Movie already Rented' : '';
       })
     );
   }
 
-  rentMovie(movie: Movie): void {
-    this.userService.addMovie(movie);
-    this.router.navigate(['cart']);
+  public addMovieToCart(movie: Movie): void {
+    this.subscriptions.add(
+      this.moviesService.addMovieToCart(this.userId, movie).subscribe(() => this.router.navigate(['cart']))
+    );
   }
 
-  getUser(): void {
-    this.user = this.userService.getUser();
+  private getUser(): void {
+    this.subscriptions.add(
+      this.userService.getUser().subscribe((user: User) => {
+        this.user = user;
+        this.userId = user.id ?? '';
+        this.getMovie();
+      })
+    );
   }
 
   ngOnDestroy(): void {
-      this.subscriptions.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }
