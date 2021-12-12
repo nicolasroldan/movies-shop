@@ -1,24 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Movie } from '../models/Movie';
+import { Observable } from 'rxjs';
 import { User } from '../models/User';
 
+const apiUrl = 'https://61b383acaf5ff70017ca1fbb.mockapi.io/tumuvi/api/v1';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private user: User;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  setUser(user: User): void {
+  public setUser(user: User): void {
     this.user = user;
   }
 
-  getUser(): User {
-    return this.user;
+  public getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${apiUrl}/users`);
   }
 
-  addMovie(movie: Movie): void {
-    this.user.moviesInCart.push(movie);
+  public getUser(): Observable<User> {
+    const userId = localStorage.getItem('userId');
+    return this.http.get<User>(`${apiUrl}/users/${userId}`);
+  }
+
+  public createUser(user: User): Observable<User[]> {
+    return this.http.post<User[]>(`${apiUrl}/users`, user);
   }
 }
