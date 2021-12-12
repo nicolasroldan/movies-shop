@@ -1,5 +1,6 @@
+<app-spinner *ngIf="loading"></app-spinner>
 <!-- Watch Movies -->
-<section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+<section *ngIf="!loading" class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
@@ -17,7 +18,7 @@
 </section>
 
 <!-- Newsletter -->
-<section class="newsletter text-light p-5">
+<section *ngIf="!loading" class="newsletter text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
             <h4 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h4>
@@ -30,7 +31,7 @@
 </section>
 
 <!-- Movies -->
-<section id="movies" class="p-5 bg-dark">
+<section *ngIf="!loading" id="movies" class="p-5 bg-dark">
     <div class="container">
         <h3 class="text-center text-white">Movies</h3>
         <p class="lead text-center text-white mb-5">

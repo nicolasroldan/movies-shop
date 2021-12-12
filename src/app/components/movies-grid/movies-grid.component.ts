@@ -10,29 +10,32 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./movies-grid.component.scss']
 })
 export class MoviesGridComponent implements OnInit, OnDestroy {
+  public loading: boolean;
   public movies: Movie[] = [];
   private subscriptions: Subscription = new Subscription();
 
   constructor(private moviesService: MoviesService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.subscriptions.add(
-      this.moviesService.getMovies().subscribe(movies => {
+      this.moviesService.getMovies().subscribe((movies: Movie[]) => {
         this.movies = movies;
+        this.loading = false;
       })
     );
   }
 
-  goToMovieDetails(movie: Movie): void {
+  public goToMovieDetails(movie: Movie): void {
     this.router.navigate([`/movies/details/${movie.id}`]);
   }
 
-  goToMoviesList(): void {
+  public goToMoviesList(): void {
     document.getElementById('movies')?.scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "nearest"
-      });
+    });
   }
 
   ngOnDestroy(): void {

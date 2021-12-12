@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MoviesGridComponent } from './components/movies-grid/movies-grid.component';
 import { MovieDetailsComponent } from './components/movies-grid/movie-details/movie-details.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    DashboardComponent,
     MoviesGridComponent,
     MovieDetailsComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

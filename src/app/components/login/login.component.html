@@ -37,6 +37,11 @@
                     <span class="login-account">Don't have an Account?</span>
                     <span class="login-signin" id="sign-up" (click)="goToRegister()">Sign Up</span>
                 </div>
+                <div *ngIf="incorrectPassword || nonExistingUser" class="alert alert-danger">
+                    <div>
+                        {{errorMessageString}}
+                    </div>
+                </div>
             </form>
         </div>
     </div>
