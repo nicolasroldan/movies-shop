@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class MovieDetailsComponent implements OnInit, OnDestroy {
   public loading: boolean;
   public movie: Movie;
-  private user: User;
+  public user: User;
   public isMovieInCart: boolean = false;
   public isMovieRented: boolean = false;
   private subscriptions: Subscription = new Subscription();
@@ -59,6 +59,10 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
         this.getMovie();
       })
     );
+  }
+
+  public goToEditMovie(movie: Movie): void {
+    this.router.navigate([`/edit-movie/${movie.id}`]);
   }
 
   ngOnDestroy(): void {
