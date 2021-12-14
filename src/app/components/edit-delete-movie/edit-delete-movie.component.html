@@ -1,0 +1,108 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<section  *ngIf="movie && !loading" class="container justify-content-center">
+    <h2 class="text-center text-light mb-4">Edit Movie</h2>
+    <form class="col-6 my-0 mx-auto" [formGroup]="editMovieForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label class="form-label text-light" for="country">Country: </label>
+            <input class="form-control" type="text" id="country" placeholder="Add country"
+                formControlName="country">
+        </div>
+        <div *ngIf="country?.invalid && (country?.dirty || country?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="country?.errors?.['required']">
+                Country required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="director">Director: </label>
+            <input class="form-control" type="text" id="director" placeholder="Add director"
+                formControlName="director">
+        </div>
+        <div *ngIf="director?.invalid && (director?.dirty || director?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="director?.errors?.['required']">
+                Director required
+            </div>
+        </div>
+         <div class="mb-3">
+            <label class="form-label text-light" for="duration">Duration: </label>
+            <input class="form-control" type="text" id="duration" placeholder="Add duration"
+                formControlName="duration">
+        </div>
+        <div *ngIf="duration?.invalid && (duration?.dirty || duration?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="duration?.errors?.['required']">
+                Duration required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="genre">Genre: </label>
+            <input class="form-control" type="text" id="genre" placeholder="Add genre"
+                formControlName="genre">
+        </div>
+        <div *ngIf="genre?.invalid && (genre?.dirty || genre?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="genre?.errors?.['required']">
+                Genre required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="image">Image: </label>
+            <input class="form-control" type="text" id="image" placeholder="Add image"
+                formControlName="image">
+        </div>
+        <div *ngIf="image?.invalid && (image?.dirty || image?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="image?.errors?.['required']">
+                Image required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="price">Price: </label>
+            <input class="form-control" type="text" id="price" placeholder="Add price"
+                formControlName="price">
+        </div>
+        <div *ngIf="price?.invalid && (price?.dirty || price?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="price?.errors?.['required']">
+                Price required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="synopsis">Synopsis: </label>
+            <textarea cols="30" rows="5" class="form-control" type="text" id="synopsis" placeholder="Add synopsis"
+                formControlName="synopsis"></textarea>
+        </div>
+        <div *ngIf="synopsis?.invalid && (synopsis?.dirty || synopsis?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="synopsis?.errors?.['required']">
+                Synopsis required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="title">Title: </label>
+            <input class="form-control" type="text" id="title" placeholder="Add title"
+                formControlName="title">
+        </div>
+        <div *ngIf="title?.invalid && (title?.dirty || title?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="title?.errors?.['required']">
+                Title required
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light" for="year">Year: </label>
+            <input class="form-control" type="text" id="year" placeholder="Add year"
+                formControlName="year">
+        </div>
+        <div *ngIf="year?.invalid && (year?.dirty || year?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="year?.errors?.['required']">
+                Year required
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!formHasChanges || !(editMovieForm.valid && editMovieForm.dirty)">Submit changes</button>
+        <button class="btn btn-danger mx-3" type="button" (click)="deleteMovie()">Delete Movie</button>
+        <p class="text-light mt-3">{{messageString}}</p>
+    </form>
+</section>
