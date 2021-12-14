@@ -35,7 +35,7 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.user.moviesInCart.map(movie => movie.price).reduce((a, b) => a + b, 0);
   }
 
-  public deleteMovieFromCart(movieToDelete: Movie) {
+  public deleteMovieFromCart(movieToDelete: Movie): void {
     const indexOfMovieToRemove = this.user.moviesInCart.indexOf(movieToDelete);
     this.subscriptions.add(
       this.moviesService.deleteMovieFromCart(this.userId, movieToDelete.id ?? '').subscribe(() => {
