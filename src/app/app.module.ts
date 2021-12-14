@@ -13,6 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { AddMovieComponent } from './components/add-movie/add-movie.component';
+import { EditDeleteMovieComponent } from './components/edit-delete-movie/edit-delete-movie.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MovieDetailsComponent,
     FooterComponent,
     CartComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    AddMovieComponent,
+    EditDeleteMovieComponent
   ],
   imports: [
     BrowserModule,
