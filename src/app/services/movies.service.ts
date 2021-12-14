@@ -19,18 +19,20 @@ export class MoviesService {
     return this.http.get<Movie>(`${apiUrl}/movies/${movieId}`);
   }
 
-  public addMovieToCart(userId: string, movie: Movie):  Observable<Movie> {
-    const requestBody: Movie = {
-      country: movie.country,
-      director: movie.director,
-      duration: movie.duration,
-      genre: movie.genre,
-      image: movie.image,
-      price: movie.price,
-      synopsis: movie.synopsis,
-      title: movie.title,
-      year: movie.year
-    }
+  public addMovie(movie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(`${apiUrl}/movies`, movie);
+  }
+  
+  public deleteMovie(movieId: string): Observable<Movie> {
+    return this.http.delete<Movie>(`${apiUrl}/movies/${movieId}`);
+  }
+
+  public editMovie(movieId: string, movie: Movie): Observable<Movie> {
+    return this.http.put<Movie>(`${apiUrl}/movies/${movieId}`, movie);
+  }
+
+  public addMovieToCart(userId: string, movie: Movie): Observable<Movie> {
+    const requestBody: Movie = movie;
     return this.http.post<Movie>(`${apiUrl}/users/${userId}/moviesInCart`, requestBody);
   }
 
@@ -39,17 +41,7 @@ export class MoviesService {
   }
 
   public addMovieToRentedList(userId: string, movie: Movie): Observable<Movie> {
-    const requestBody: Movie = {
-      country: movie.country,
-      director: movie.director,
-      duration: movie.duration,
-      genre: movie.genre,
-      image: movie.image,
-      price: movie.price,
-      synopsis: movie.synopsis,
-      title: movie.title,
-      year: movie.year
-    }
+    const requestBody: Movie = movie;  
     return this.http.post<Movie>(`${apiUrl}/users/${userId}/rentedMovies`, requestBody);
   }
 }

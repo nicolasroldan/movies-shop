@@ -6,11 +6,17 @@
         </button>
         <div id="navmenu" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
+                <li *ngIf="user?.isAdmin" class="navbar-item">
+                    <a class="nav-link" (click)="goToAddMovie()">Add Movie</a>
+                </li>
                 <li class="navbar-item">
                     <a class="nav-link" (click)="goToDashboard()">Movies</a>
                 </li>
                 <li class="navbar-item">
                     <a class="nav-link" (click)="goToCart()">Cart</a>
+                </li>
+                <li class="navbar-item">
+                    <a class="nav-link" (click)="goToLogin()">Log Out</a>
                 </li>
             </ul>
         </div>
