@@ -90,7 +90,12 @@ export class EditDeleteMovieComponent implements OnInit, OnDestroy {
 
 	public onSubmit(): void {
 		this.loading = true;
-		const genre = this.editMovieForm.value.genre.includes(',') ? this.editMovieForm.value.genre.split(',') : [this.editMovieForm.value.genre];
+		let genre: string[] = []
+		if (typeof (this.editMovieForm.value.genre) === 'string' && this.editMovieForm.value.genre.includes(',')) {
+			genre = this.editMovieForm.value.genre.split(',');
+		} else {
+			genre.push(this.editMovieForm.value.genre);
+		} 
 		const movieEdited: Movie = {
 			country: this.country?.value,
 			director: this.director?.value,
