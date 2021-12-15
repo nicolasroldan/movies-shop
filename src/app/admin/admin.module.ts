@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 
-import { AddMovieComponent } from './add-movie/add-movie.component';
-import { EditDeleteMovieComponent } from './edit-delete-movie/edit-delete-movie.component';
+import { AddMovieComponent } from './components/add-movie/add-movie.component';
+import { EditDeleteMovieComponent } from './components/edit-delete-movie/edit-delete-movie.component';
 
 
 @NgModule({
