@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   public goToLogin(): void {
-    this.router.navigate(['auth/login']);
+    this.router.navigate(['auth']);
   }
 
   public onTogglePassword(): void {
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         rentedMovies: []
       }
       this.subscriptions.add(
-        this.userService.createUser(user).subscribe(() => this.router.navigate(['auth/login']))
+        this.userService.createUser(user).subscribe(() => this.router.navigate(['auth']))
       );
     };
   }

@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public goToLogin(): void {
     localStorage.clear();
-    this.router.navigate(['auth/login']);
+    this.router.navigate(['auth']);
   }
 
   ngOnDestroy(): void {
