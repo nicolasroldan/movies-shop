@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public goToRegister(): void {
-    this.router.navigate(['register']);
+    this.router.navigate(['auth/register']);
   }
 
   public onTogglePassword(): void {
