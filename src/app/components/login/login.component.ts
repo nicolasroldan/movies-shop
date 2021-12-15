@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userLoggedIn = localStorage.getItem('userEmail') ? true : false;
     if(this.userLoggedIn) {
-      this.router.navigate(['movies-list']);
+      this.router.navigate(['client/movies-list']);
     } else {
       this.subscriptions.add(
         this.userService.getUsers().subscribe((users: User[]) => {
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       localStorage.setItem('userEmail', user.email);
       localStorage.setItem('userId', user.id ?? '');
       this.userService.setUser(user);
-      this.router.navigate(['movies-list']);
+      this.router.navigate(['client/movies-list']);
     }
   }
 

@@ -133,7 +133,7 @@ export class EditDeleteMovieComponent implements OnInit, OnDestroy {
 		this.subscriptions.add(
 			this.moviesService.deleteMovie(this.movie.id ?? '').subscribe(() => {
 				this.loading = false;
-				this.router.navigate(['movies-list']);
+				this.router.navigate(['client/movies-list']);
 			})
 		);
 	}

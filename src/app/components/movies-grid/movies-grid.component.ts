@@ -27,7 +27,7 @@ export class MoviesGridComponent implements OnInit, OnDestroy {
   }
 
   public goToMovieDetails(movie: Movie): void {
-    this.router.navigate([`/movies/details/${movie.id}`]);
+    this.router.navigate([`client/movies/details/${movie.id}`]);
   }
 
   public goToMoviesList(): void {

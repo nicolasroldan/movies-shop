@@ -22,11 +22,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public goToCart(): void {
-    this.router.navigate(['cart']);
+    this.router.navigate(['client/cart']);
   }
 
   public goToDashboard(): void {
-    this.router.navigate(['movies-list']);
+    this.router.navigate(['client/movies-list']);
   }
 
   public goToAddMovie(): void {

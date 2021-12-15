@@ -47,7 +47,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
   public addMovieToCart(movie: Movie): void {
     this.subscriptions.add(
-      this.moviesService.addMovieToCart(this.userId, movie).subscribe(() => this.router.navigate(['cart']))
+      this.moviesService.addMovieToCart(this.userId, movie).subscribe(() => this.router.navigate(['client/cart']))
     );
   }
 
@@ -62,7 +62,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   public goToEditMovie(movie: Movie): void {
-    this.router.navigate([`/admin/edit-movie/${movie.id}`]);
+    this.router.navigate([`admin/edit-movie/${movie.id}`]);
   }
 
   ngOnDestroy(): void {
