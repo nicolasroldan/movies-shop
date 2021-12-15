@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -16,6 +17,9 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
     CommonModule,
     MatDialogModule,
     MatButtonModule,
+  ],
+  providers: [
+    UserService
   ],
   exports: [
     SpinnerComponent

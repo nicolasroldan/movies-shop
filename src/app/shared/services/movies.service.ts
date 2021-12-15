@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Movie } from '../models/Movie';
+import { Movie } from '../../models/Movie';
 import { HttpClient } from '@angular/common/http';
 
 const apiUrl = 'https://61b383acaf5ff70017ca1fbb.mockapi.io/tumuvi/api/v1';

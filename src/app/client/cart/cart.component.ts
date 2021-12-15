@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { User } from 'src/app/models/User';
-import { MoviesService } from 'src/app/services/movies.service';
-import { UserService } from 'src/app/services/user.service';
+import { MoviesService } from 'src/app/shared/services/movies.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-cart',
