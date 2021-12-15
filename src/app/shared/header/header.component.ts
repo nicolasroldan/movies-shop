@@ -16,9 +16,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private userServie: UserService) {}
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.userServie.getUser().subscribe((user: User) => this.user = user)
-    );
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.subscriptions.add(
+        this.userServie.getUser(userId).subscribe((user: User) => this.user = user)
+      );
+    }
   }
 
   public goToCart(): void {
@@ -35,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public goToLogin(): void {
     localStorage.clear();
-    this.router.navigate(['login']);
+    this.router.navigate(['auth/login']);
   }
 
   ngOnDestroy(): void {

@@ -20,15 +20,18 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, private moviesService: MoviesService) { }
 
   ngOnInit(): void {
+    const userId = localStorage.getItem('userId');
     this.loading = true;
-    this.subscriptions.add(
-      this.userService.getUser().subscribe((user: User) => {
-        this.user = user;
-        this.userId = this.user.id ?? '';
-        this.loading = false;
-        this.totalMoviesInCart = user.moviesInCart.length;
-      })
-    );
+    if (userId) {
+      this.subscriptions.add(
+        this.userService.getUser(userId).subscribe((user: User) => {
+          this.user = user;
+          this.userId = this.user.id ?? '';
+          this.loading = false;
+          this.totalMoviesInCart = user.moviesInCart.length;
+        })
+      );
+    }
   }
 
   public calculateTotalPrice(): number {

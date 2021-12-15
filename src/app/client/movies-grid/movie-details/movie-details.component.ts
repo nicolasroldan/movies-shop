@@ -52,13 +52,16 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getUser(): void {
-    this.subscriptions.add(
-      this.userService.getUser().subscribe((user: User) => {
-        this.user = user;
-        this.userId = user.id ?? '';
-        this.getMovie();
-      })
-    );
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.subscriptions.add(
+        this.userService.getUser(userId).subscribe((user: User) => {
+          this.user = user;
+          this.userId = user.id ?? '';
+          this.getMovie();
+        })
+      );
+    }
   }
 
   public goToEditMovie(movie: Movie): void {

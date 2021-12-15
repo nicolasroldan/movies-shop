@@ -20,8 +20,7 @@ export class UserService {
     return this.http.get<User[]>(`${apiUrl}/users`);
   }
 
-  public getUser(): Observable<User> {
-    const userId = localStorage.getItem('userId');
+  public getUser(userId: string): Observable<User> {
     return this.http.get<User>(`${apiUrl}/users/${userId}`);
   }
 
