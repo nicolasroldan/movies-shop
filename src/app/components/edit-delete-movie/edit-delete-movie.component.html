@@ -103,6 +103,5 @@
         </div>
         <button class="btn btn-primary" type="submit" [disabled]="!formHasChanges || !(editMovieForm.valid && editMovieForm.dirty)">Submit changes</button>
         <button class="btn btn-danger mx-3" type="button" (click)="deleteMovie()">Delete Movie</button>
-        <p class="text-light mt-3">{{messageString}}</p>
     </form>
 </section>

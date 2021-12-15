@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-add-movie',
@@ -12,11 +14,10 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class AddMovieComponent implements OnInit, OnDestroy {
   public loading: boolean;
   public addMovieForm: FormGroup;
-  public messageString: string;
   public formSubmitted: boolean = false;
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private fb: FormBuilder, private moviesService: MoviesService) { }
+  constructor(private fb: FormBuilder, private moviesService: MoviesService, private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -88,8 +89,11 @@ export class AddMovieComponent implements OnInit, OnDestroy {
       this.moviesService.addMovie(movie).subscribe(() => {
         this.addMovieForm.reset();
         this.formSubmitted = true;
-        this.messageString = 'Movie Added Successfully!';
         this.loading = false;
+        this.dialogRef.open(ConfirmationModalComponent, {
+					width: '250px',
+					data: { message: 'Movie Added Successfully!' }
+				});
       })
     );
   }

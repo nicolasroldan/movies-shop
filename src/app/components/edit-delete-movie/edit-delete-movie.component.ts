@@ -1,9 +1,11 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
 	selector: 'app-edit-delete-movie',
@@ -15,10 +17,13 @@ export class EditDeleteMovieComponent implements OnInit, OnDestroy {
 	private subscriptions: Subscription = new Subscription();
 	public movie: Movie;
 	public loading: boolean;
-	public messageString: string;
 	public formHasChanges: boolean;
 
-	constructor(private fb: FormBuilder, private route: ActivatedRoute, private moviesService: MoviesService, private router: Router) { }
+	constructor(private fb: FormBuilder,
+		private route: ActivatedRoute,
+		private moviesService: MoviesService,
+		private router: Router,
+		private dialogRef: MatDialog) { }
 
 	ngOnInit(): void {
 		this.loading = true;
@@ -100,8 +105,16 @@ export class EditDeleteMovieComponent implements OnInit, OnDestroy {
 		this.subscriptions.add(
 			this.moviesService.editMovie(this.movie.id ?? '', movieEdited).subscribe(() => {
 				this.editMovieForm.markAsPristine();
-				this.messageString = 'Changes Saved Successfully!';
 				this.loading = false;
+				const dialogRef = this.dialogRef.open(ConfirmationModalComponent, {
+					width: '250px',
+					data: { message: 'Changes Saved Successfully!' }
+				});
+				dialogRef.afterClosed().subscribe(() => {
+					this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+					this.router.onSameUrlNavigation = 'reload';
+					this.router.navigate([`/edit-movie/${this.movie.id}`]);
+				});
 			})
 		);
 	}
@@ -110,7 +123,7 @@ export class EditDeleteMovieComponent implements OnInit, OnDestroy {
 		const initialValue = this.editMovieForm.value;
 		this.subscriptions.add(
 			this.editMovieForm.valueChanges.subscribe(() => {
-				this.formHasChanges = Object.keys(initialValue).some(key => this.editMovieForm.value[key] != initialValue[key])
+				this.formHasChanges = Object.keys(initialValue).some(key => this.editMovieForm.value[key] !== initialValue[key])
 			})
 		);
 	}

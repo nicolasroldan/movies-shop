@@ -15,6 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { EditDeleteMovieComponent } from './components/edit-delete-movie/edit-delete-movie.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +32,17 @@ import { EditDeleteMovieComponent } from './components/edit-delete-movie/edit-de
     CartComponent,
     SpinnerComponent,
     AddMovieComponent,
-    EditDeleteMovieComponent
+    EditDeleteMovieComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
