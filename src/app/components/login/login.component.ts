@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public nonExistingUser: boolean;
   public errorMessageString: string;
   private subscriptions: Subscription = new Subscription();
+  public userLoggedIn: boolean;
 
   constructor(
     private router: Router,
@@ -26,15 +27,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.userService.getUsers().subscribe((users: User[]) => {
-        this.usersList = users;
-      })
-    );
-    this.loginForm = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-    });
+    this.userLoggedIn = localStorage.getItem('userEmail') ? true : false;
+    if(this.userLoggedIn) {
+      this.router.navigate(['movies-list']);
+    } else {
+      this.subscriptions.add(
+        this.userService.getUsers().subscribe((users: User[]) => {
+          this.usersList = users;
+        })
+      );
+      this.loginForm = this.fb.group({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', Validators.required),
+      });
+    }
   }
 
   get email(): AbstractControl | null {

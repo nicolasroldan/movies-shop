@@ -12,13 +12,12 @@ import { MovieDetailsComponent } from './components/movies-grid/movie-details/mo
 import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { EditDeleteMovieComponent } from './components/edit-delete-movie/edit-delete-movie.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,6 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MovieDetailsComponent,
     FooterComponent,
     CartComponent,
-    SpinnerComponent,
-    AddMovieComponent,
     EditDeleteMovieComponent,
     ConfirmationModalComponent
   ],
@@ -42,7 +39,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

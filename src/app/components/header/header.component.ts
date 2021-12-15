@@ -30,10 +30,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public goToAddMovie(): void {
-    this.router.navigate(['add-movie']);
+    this.router.navigate(['admin/add-movie']);
   }
 
   public goToLogin(): void {
+    localStorage.clear();
     this.router.navigate(['login']);
   }
 
