@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from 'src/app/services/movies.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationModalComponent } from '../../components/confirmation-modal/confirmation-modal.component';
+import { ConfirmationModalComponent } from '../../shared/confirmation-modal/confirmation-modal.component';
 
 @Component({
 	selector: 'app-edit-delete-movie',
@@ -113,7 +113,7 @@ export class EditDeleteMovieComponent implements OnInit, OnDestroy {
 				dialogRef.afterClosed().subscribe(() => {
 					this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 					this.router.onSameUrlNavigation = 'reload';
-					this.router.navigate([`/edit-movie/${this.movie.id}`]);
+					this.router.navigate([`/admin/edit-movie/${this.movie.id}`]);
 				});
 			})
 		);

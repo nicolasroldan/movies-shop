@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+
 import { SpinnerComponent } from './spinner/spinner.component';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 
 
 @NgModule({
   declarations: [
-    SpinnerComponent
+    SpinnerComponent,
+    ConfirmationModalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports: [
     SpinnerComponent
