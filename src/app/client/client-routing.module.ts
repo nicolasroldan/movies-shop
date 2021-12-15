@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from '../components/cart/cart.component';
-import { MovieDetailsComponent } from '../components/movies-grid/movie-details/movie-details.component';
-import { MoviesGridComponent } from '../components/movies-grid/movies-grid.component';
+import { CartComponent } from './cart/cart.component';
+import { MovieDetailsComponent } from './movies-grid/movie-details/movie-details.component';
+import { MoviesGridComponent } from './movies-grid/movies-grid.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'movies-list', pathMatch: 'full' },
