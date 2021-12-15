@@ -62,7 +62,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   public goToEditMovie(movie: Movie): void {
-    this.router.navigate([`/edit-movie/${movie.id}`]);
+    this.router.navigate([`/admin/edit-movie/${movie.id}`]);
   }
 
   ngOnDestroy(): void {
