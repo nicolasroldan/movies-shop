@@ -1,0 +1,36 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<section *ngIf="users && !loading" class="p-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md p-5 card">
+                <h3 class="mb-4 ">General Summary and Clients Info</h3>
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let user of users" class="list-group-item justify-content-between d-md-flex row">
+                        <p class="col-md-3 col-xs-12">{{user.name}}</p>
+                        <mat-form-field class="col-md-3 col-xs-12">
+                            <mat-label>In Cart Movies</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let movie of user.moviesInCart">
+                                    {{movie.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-3 col-xs-12">
+                            <mat-label>Rented Movies</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let movie of user.rentedMovies">
+                                    {{movie.title}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button class="col-md-3 col-xs-12" mat-button color="primary">Total:
+                            ${{calculateUserRentedMoviesPrice(user)}}</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row justify-content-end mt-3">
+            <button mat-button color="primary">Total from All Clients: ${{totalPriceRentedMovies}}</button>
+        </div>
+    </div>
+</section>

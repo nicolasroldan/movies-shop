@@ -12,8 +12,11 @@
                 <li class="navbar-item">
                     <a class="nav-link" (click)="goToDashboard()">Movies</a>
                 </li>
-                <li class="navbar-item">
+                <li *ngIf="!user?.isAdmin" class="navbar-item">
                     <a class="nav-link" (click)="goToCart()">Cart</a>
+                </li>
+                <li *ngIf="user?.isAdmin" class="navbar-item">
+                    <a class="nav-link" (click)="goToInfo()">Info</a>
                 </li>
                 <li class="navbar-item">
                     <a class="nav-link" (click)="goToLogin()">Log Out</a>

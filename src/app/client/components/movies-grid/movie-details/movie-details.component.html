@@ -8,7 +8,7 @@
             <div class="col-md-8 p-5">
                 <h2>{{movie.title}}</h2>
                 <p>{{movie.synopsis}}</p>
-                <button [disabled]="isMovieInCart || isMovieRented" class="btn btn-light" (click)="addMovieToCart(movie)">Add to Cart</button>
+                <button *ngIf="!user.isAdmin" [disabled]="isMovieInCart || isMovieRented" class="btn btn-light" (click)="addMovieToCart(movie)">Add to Cart</button>
                 <button *ngIf="user.isAdmin" class="btn btn-success d-block mt-3" (click)="goToEditMovie(movie)">Edit Movie</button>
                 <div *ngIf="isMovieInCart || isMovieRented" class="col-md-3 p-2 my-3 alert alert-warning" role="alert">
                     <p class="m-0">{{messageString}}</p>

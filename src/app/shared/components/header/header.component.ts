@@ -41,6 +41,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['auth']);
   }
 
+  public goToInfo(): void {
+    this.router.navigate(['admin/info']);
+  }
+
   ngOnDestroy(): void {
       this.subscriptions.unsubscribe();
   }

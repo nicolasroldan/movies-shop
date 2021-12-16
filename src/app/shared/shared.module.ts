@@ -28,7 +28,8 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [
     SpinnerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MatButtonModule
   ]
 })
 export class SharedModule { }
