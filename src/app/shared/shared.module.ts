@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from '../material/material.module';
 
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
-import { UserService } from './services/user.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -19,17 +17,12 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-  ],
-  providers: [
-    UserService
+    MaterialModule
   ],
   exports: [
     SpinnerComponent,
     HeaderComponent,
-    FooterComponent,
-    MatButtonModule
+    FooterComponent
   ]
 })
 export class SharedModule { }
