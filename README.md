@@ -13,7 +13,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Project Architecture
 
 The project is organized in 6 modules:
-
+```
 `app.module` General module that uses lazy loading strategy to load all the other modules.
 `admin` Admin module that contains the components that an admin user will see (add-edit-movie and info).
 `auth` Auth module that contains the login and register components.
@@ -22,7 +22,7 @@ The project is organized in 6 modules:
 `shared` Shared module that contains the shared components and services.
 
 `guards` Contains the http guards (auth.guard and admin.guard).
-
+```
 ## Admin and Client users
 
 Client users can be created in the register view.
