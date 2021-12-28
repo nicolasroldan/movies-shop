@@ -25,7 +25,8 @@ export class InfoComponent implements OnInit {
     this.loading = true;
     this.subscriptions.add(
       this.userService.getUsers().subscribe((users: User[]) => {
-        this.users = users;
+        const clients = users.filter(user => !user.isAdmin);
+        this.users = clients;
         this.loading = false;
         this.totalPriceRentedMovies = this.calculateTotalUsersRentedMoviesPrice(this.users);
       })
