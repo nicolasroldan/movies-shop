@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.minLength(8),
       ]),
+      isAdmin: new FormControl(false)
     });
   }
 
@@ -41,6 +42,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     return this.registerForm.get('password');
   }
 
+  get isAdmin(): AbstractControl | null {
+    return this.registerForm.get('isAdmin');
+  }
+
   public goToLogin(): void {
     this.router.navigate(['auth']);
   }
@@ -51,12 +56,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
-    if (this.name && this.email && this.password) {
+    if (this.name && this.email && this.password && this.isAdmin) {
       const user: User = {
         name: this.name.value,
         email: this.email.value,
         password: this.password.value,
-        isAdmin: false,
+        isAdmin: this.isAdmin.value,
         moviesInCart: [],
         rentedMovies: []
       }
