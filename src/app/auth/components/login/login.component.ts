@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.nonExistingUser = !existingUser ? true : false;
     this.incorrectPassword = this.password?.value !== existingUser?.password ? true : false;
     this.errorMessageString = this.nonExistingUser ? 'Non Existing User' : this.incorrectPassword ? 'Incorrect Password' : '';
-
     if (!this.nonExistingUser && !this.incorrectPassword && existingUser) {
       const user: User = {
         name: existingUser.name,

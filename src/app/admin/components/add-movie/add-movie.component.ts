@@ -91,14 +91,14 @@ export class AddMovieComponent implements OnInit, OnDestroy {
         this.formSubmitted = true;
         this.loading = false;
         this.dialogRef.open(ConfirmationModalComponent, {
-					width: '250px',
-					data: { message: 'Movie Added Successfully!' }
-				});
+          width: '250px',
+          data: { message: 'Movie Added Successfully!' }
+        });
       })
     );
   }
 
   ngOnDestroy(): void {
-      this.subscriptions.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }
