@@ -12,7 +12,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   public loginForm: FormGroup;
-  @ViewChild('passwordInput', { static: true }) passwordInput: ElementRef;
+  @ViewChild('passwordInput') passwordInput: ElementRef;
   public showPassword: boolean = false;
   private usersList: User[] = [];
   public incorrectPassword: boolean;
