@@ -19,28 +19,38 @@ export class InfoComponent implements OnInit {
   public users: User[] = [];
   public totalPriceRentedMovies: number = 0;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.subscriptions.add(
       this.userService.getUsers().subscribe((users: User[]) => {
-        const clients = users.filter(user => !user.isAdmin);
+        const clients = users.filter((user) => !user.isAdmin);
         this.users = clients;
         this.loading = false;
-        this.totalPriceRentedMovies = this.calculateTotalUsersRentedMoviesPrice(this.users);
+        this.totalPriceRentedMovies = this.calculateTotalUsersRentedMoviesPrice(
+          this.users
+        );
       })
     );
   }
 
   public calculateUserRentedMoviesPrice(user: User): number {
-    return user.rentedMovies.map(movie => movie.price).reduce((a, b) => a + b, 0);
+    return user.rentedMovies
+      .map((movie) =>
+        typeof movie.price === 'number' ? movie.price : parseInt(movie.price)
+      )
+      .reduce((a, b) => a + b, 0);
   }
 
   public calculateTotalUsersRentedMoviesPrice(users: User[]): number {
     let allUsersTotal: number = 0;
     users.forEach((user: User) => {
-      const eachUserTotal = user.rentedMovies.map(movie => movie.price).reduce((a, b) => a + b, 0);
+      const eachUserTotal = user.rentedMovies
+        .map((movie) =>
+          typeof movie.price === 'number' ? movie.price : parseInt(movie.price)
+        )
+        .reduce((a, b) => a + b, 0);
       allUsersTotal += eachUserTotal;
     });
     return allUsersTotal;
@@ -49,5 +59,4 @@ export class InfoComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
-
 }
